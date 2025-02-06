@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Github, ExternalLink, Code } from 'lucide-react';
+import Hero3D from './components/Hero3D';
+import Skills3D from './components/Skills3D';
+import Timeline3D from './components/Timeline3D';
+import ProjectCard3D from './components/ProjectCard3D';
+import { Canvas, extend } from '@react-three/fiber';
+import * as THREE from 'three';
+
+extend({ Canvas });
 
 function App() {
   const [displayText, setDisplayText] = useState('');
@@ -45,6 +53,7 @@ function App() {
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
               Full Stack Developer
             </h2>
+            <Hero3D />
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Passionate about creating elegant solutions to complex problems. Specialized in building
               modern web applications with cutting-edge technologies.
@@ -57,6 +66,11 @@ function App() {
       <section className="py-16 bg-gray-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Skills & Expertise</h2>
+          <Canvas style={{ height: '400px', width: '100%' }}>
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[0, 5, 10]} intensity={1} />
+            <Skills3D />
+          </Canvas>
           <div className="relative max-w-6xl mx-auto">
             <button
               onClick={() => scrollContainer('skills-container', 'left')}
@@ -183,7 +197,7 @@ function App() {
                         <span className="text-blue-400">{tech.level}%</span>
                       </div>
                       <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <div 
+                        <div
                           className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
                           style={{ width: `${tech.level}%` }}
                         />
@@ -201,6 +215,9 @@ function App() {
       <section className="py-20 bg-gray-800/50">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+          
+            <ProjectCard3D />
+          
           <div className="relative max-w-6xl mx-auto">
             <button
               onClick={() => scrollContainer('projects-container', 'left')}
@@ -300,6 +317,13 @@ function App() {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 text-center">Work Experience</h2>
+          
+            <Canvas style={{ height: '300px', width: '100%' }}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[0, 5, 10]} intensity={1} />
+              <Timeline3D />
+            </Canvas>
+          
           <div className="max-w-4xl mx-auto space-y-8">
             {[
               {
@@ -358,6 +382,24 @@ function App() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 bg-gray-800/50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12 text-center">Education</h2>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="bg-white/5 rounded-xl p-8 hover:bg-white/10 transition border-l-4 border-blue-500">
+              <h3 className="text-xl font-bold text-blue-400">National School of Computer Science</h3>
+              <p className="text-gray-400">Computer Science Major</p>
+              <p className="text-gray-400">Bachelor Degree</p>
+              <p className="text-gray-500 font-mono">2014 - 2017</p>
+              <p className="text-gray-300 mt-4">
+                End Year Thesis: Native Android App for tourism
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -7,4 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  resolve: {
+    alias: {
+      three: 'three',
+    },
+  },
 });
