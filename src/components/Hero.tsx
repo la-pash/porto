@@ -1,0 +1,54 @@
+import React, { useState, useEffect } from 'react';
+import ContactInfo from './ContactInfo';
+import SocialLinks from './SocialLinks';
+import Languages from './Languages';
+
+const Hero = () => {
+  const [displayText, setDisplayText] = useState('');
+  const fullName = 'Seif Eddine Kharrachi';
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < fullName.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + fullName[currentIndex]);
+        setCurrentIndex(currentIndex + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex]);
+
+  return (
+    <section className="py-20 text-center">
+      <div className="container mx-auto px-6">
+        <div className="mb-8">
+          <img
+            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400"
+            alt="Profile"
+            className="w-48 h-48 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
+          />
+          <h1 className="font-mono text-3xl font-bold mb-2 text-blue-400">
+            {displayText}
+            <span className="animate-blink">|</span>
+          </h1>
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+            Full Stack Developer
+          </h2>
+          
+          <ContactInfo />
+
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Throughout my career, I've developed for Android, expanded into React and React Native for Android and iOS, 
+            implemented an Ethereum Blockchain DAPP, and successfully led product teams as scrum master. These experiences 
+            have strengthened my communication and project efficiency skills, allowing me to contribute effectively.
+          </p>
+
+          <SocialLinks />
+          <Languages />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
