@@ -107,7 +107,7 @@ const Experience = () => {
           Experience
         </h2>
         <div className="max-w-4xl mx-auto space-y-8">
-          {experiences.map((exp, index) => (
+          {experiences.toReversed().map((exp, index) => (
             <div key={index} className="bg-white/5 rounded-xl p-8 hover:bg-white/10 transition border-l-4 border-blue-500">
               <div className="flex flex-wrap justify-between items-start mb-4">
                 <div>
