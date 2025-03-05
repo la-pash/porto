@@ -46,7 +46,7 @@ const Hero = () => {
       <div className="container mx-auto px-6">
         <div className="mb-8">
           <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400"
+            src="https://media.licdn.com/dms/image/v2/D5603AQEXGxvnZHkTuA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1699499361429?e=1746662400&v=beta&t=ehHqB26Pd2m11RVCHVXb4bKv3O8ZDmkocFNGslota7c"
             alt="Profile"
             className="w-48 h-48 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
           />
